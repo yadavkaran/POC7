@@ -1,0 +1,48 @@
+<h3>Create Student</h3>
+<div style="width: 400px;">
+    <form [formGroup]="createStudent" (ngSubmit)="onSubmit()" novalidate>
+
+      <div class="form-group">
+        <label for="name">First Name</label>
+        <input formControlName="firstName" type="text" class="form-control" id="firstName" [(ngModel)]="student.firstName" required  name="firstName" [class.invalid]="isInvalidAndDirty('firstName')">
+        <span class="error-message" *ngIf="hasError('firstName','required')">
+          First name is required !!!
+        </span>
+        <span class="error-message" *ngIf="hasError('firstName','minlength')">
+          First name must be at least 2 characters long
+        </span>
+        <span class="error-message" *ngIf="hasError('firstName','maxlength')">
+          First name cannot be longer than 30 characters
+        </span>
+      </div>
+  
+
+    <div class="form-group">
+      <label for="name">Last Name</label>
+      <input formControlName="lastName" type="text" class="form-control" id="lastName" [(ngModel)]="student.lastName" required  name="lastName" [class.invalid]="isInvalidAndDirty('lastName')">
+      <span class="error-message" *ngIf="hasError('lastName','required')">
+        Last name is required !!!
+      </span>
+      <span class="error-message" *ngIf="hasError('lastName','minlength')">
+        Last name must be at least 2 characters long
+      </span>
+      <span class="error-message" *ngIf="hasError('lastName','maxlength')">
+        Last name cannot be longer than 30 characters
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Email Id</label>
+      <input formControlName="emailId" type="email" class="form-control" id="emailId" required [(ngModel)]="student.emailId" name="emailId" required [class.invalid]="isInvalidAndDirty('emailId')">
+      <span class="error-message" *ngIf="hasError('emailId','required')">
+        Email is required !!!
+      </span>
+      <span class="error-message" *ngIf="hasError('emailId','pattern')">
+        Put Valid email !!!
+      </span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
